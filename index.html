@@ -12,6 +12,7 @@
         /* --- Fonts --- */
         @import url('https://fonts.googleapis.com/css2?family=GFS+Neohellenic:ital,wght@0,400;0,700;1,400;1,700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=GFS+Neohellenic:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;600;700&display=swap');
 
         /* --- CSS Variables --- */
         :root {
@@ -112,6 +113,10 @@
             gap: 2.5rem;
         }
 
+        .nav-item {
+            position: relative;
+        }
+
         .nav-links a {
             color: var(--white);
             font-family: 'GFS Neohellenic', serif;
@@ -140,6 +145,56 @@
             color: var(--gold);
         }
 
+        /* Dropdown Menu */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: linear-gradient(90deg, #6643b7 0%, #542db1 100%);
+            border: 1px solid var(--gold);
+            border-top: none;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 0.8rem 1.2rem;
+            color: var(--white);
+            text-decoration: none;
+            font-family: 'GFS Neohellenic', serif;
+            font-size: 1.1rem;
+            font-style: italic;
+            border-bottom: 1px solid rgba(251, 171, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown a:hover {
+            background-color: rgba(251, 171, 0, 0.1);
+            color: var(--gold);
+            padding-left: 1.5rem;
+        }
+
+        .dropdown a::after {
+            display: none;
+        }
+
         .menu-toggle {
             display: none;
             color: var(--white);
@@ -158,6 +213,40 @@
             gap: 4rem;
             position: relative;
             overflow: hidden;
+        }
+
+        /* Greek Sticker Decorations */
+        .hero-decoration {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            opacity: 0.25;
+            z-index: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .hero-decoration:hover {
+            opacity: 0.4;
+        }
+
+        .hero-decoration.top-left {
+            top: 20px;
+            left: 20px;
+        }
+
+        .hero-decoration.top-right {
+            top: 20px;
+            right: 20px;
+        }
+
+        .hero-decoration.bottom-left {
+            bottom: 20px;
+            left: 20px;
+        }
+
+        .hero-decoration.bottom-right {
+            bottom: 20px;
+            right: 20px;
         }
 
         .hero-logo {
@@ -181,7 +270,7 @@
         .hero h1 {
             font-size: 5rem;
             color: var(--purple);
-            margin-bottom: 0.2rem;
+            margin-bottom: 1.5rem;
             line-height: 1;
             text-shadow: 2px 2px 0px rgba(0,0,0,0.05);
         }
@@ -192,6 +281,52 @@
             font-style: italic;
             margin-bottom: 2.5rem;
             font-weight: 300;
+        }
+
+        /* --- Countdown Styling --- */
+        .countdown-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            justify-content: center;
+        }
+
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(84, 45, 177, 0.08);
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(84, 45, 177, 0.2);
+            min-width: 70px;
+            transition: all 0.3s ease;
+        }
+
+        .countdown-item:hover {
+            background-color: rgba(84, 45, 177, 0.12);
+            border-color: rgba(84, 45, 177, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .countdown-number {
+            font-family: 'Space Mono', monospace;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--maroon);
+            line-height: 1;
+            letter-spacing: 2px;
+        }
+
+        .countdown-label {
+            font-family: 'Crimson Pro', serif;
+            font-size: 0.8rem;
+            color: var(--maroon);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 0.3rem;
+            font-weight: 400;
+            opacity: 0.8;
         }
 
         /* --- Bevelish CTA Button --- */
@@ -394,6 +529,32 @@
                 display: block;
             }
             
+            .hero-decoration {
+                width: 80px;
+                height: 80px;
+                opacity: 0.2;
+            }
+
+            .hero-decoration.top-left,
+            .hero-decoration.bottom-left {
+                left: 10px;
+            }
+
+            .hero-decoration.top-right,
+            .hero-decoration.bottom-right {
+                right: 10px;
+            }
+
+            .hero-decoration.top-left,
+            .hero-decoration.top-right {
+                top: 10px;
+            }
+
+            .hero-decoration.bottom-left,
+            .hero-decoration.bottom-right {
+                bottom: 10px;
+            }
+            
             .hero {
                 flex-direction: column;
                 text-align: center;
@@ -422,6 +583,52 @@
             .quick-links h2 {
                 font-size: 2.2rem;
             }
+
+            /* Mobile Navigation */
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: linear-gradient(90deg, #6643b7 0%, #542db1 100%);
+                padding: 1rem;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                background: rgba(0,0,0,0.1);
+                margin-top: 0.5rem;
+                border-radius: 8px;
+            }
+
+            .nav-item .dropdown {
+                display: none;
+            }
+
+            .nav-item.active .dropdown {
+                display: block;
+            }
+
+            .dropdown a {
+                padding: 0.6rem 1rem;
+                font-size: 1rem;
+            }
+
+            .dropdown a:hover {
+                padding-left: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -437,7 +644,15 @@
             <div class="menu-toggle">☰</div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="/committees/who">Committees</a></li>
+                <li class="nav-item">
+                    <a href="#committees">Committees</a>
+                    <div class="dropdown">
+                        <a href="#ga1">GA 1</a>
+                        <a href="#ga2">GA 2</a>
+                        <a href="#spec">Specialized</a>
+                        <a href="#crisis">Crisis</a>
+                    </div>
+                </li>
                 <li><a href="/info">Conference Info</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -447,11 +662,18 @@
     <div class="greek-border"></div>
 
     <section class="hero">
+        <!-- Greek Sticker Decorations -->
+        <img src="/assets/Greek Stickers (1)/5.svg" alt="Greek Decoration" class="hero-decoration top-left">
+        <img src="/assets/Greek Stickers (1)/6.svg" alt="Greek Decoration" class="hero-decoration top-right">
+        <img src="/assets/Greek Stickers (1)/7.svg" alt="Greek Decoration" class="hero-decoration bottom-left">
+        <img src="/assets/Greek Stickers (1)/8.svg" alt="Greek Decoration" class="hero-decoration bottom-right">
+        
         <img src="/assets/logo_p.svg" alt="Kennedy Model UN Logo" class="hero-logo">
         
         <div class="hero-content">
             <h1>Titan MUNC</h1>
-            <p class="hero-subtitle">Empowering the Leaders of Tomorrow</p>
+                       <p class="hero-subtitle" id="countdown">Loading countdown...</p>
+
             <a href="#register" class="cta-button">Register Now</a>
         </div>
     </section>
@@ -504,6 +726,73 @@
             <p>Designed with <span style="color: var(--gold); font-size: 1.2rem;">♥</span> in Fremont, CA.</p>
         </div>
     </footer>
+
+    <script>
+        // Countdown to April 11, 2026 8:00 AM
+        const targetDate = new Date('April 11, 2026 08:00:00').getTime();
+ 
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+ 
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = 'The conference has begun!';
+                return;
+            }
+ 
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+ 
+            document.getElementById('countdown').innerHTML = 
+                `${days} days ${hours}h ${minutes}m ${seconds}s until Titan MUNC`;
+        }
+ 
+        // Update immediately, then every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Mobile Navigation Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+
+        // Mobile Dropdown Toggle
+        const navItems = document.querySelectorAll('.nav-item');
+        
+        navItems.forEach(item => {
+            const link = item.querySelector('a');
+            const dropdown = item.querySelector('.dropdown');
+            
+            if (dropdown) {
+                link.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        item.classList.toggle('active');
+                        
+                        // Close other dropdowns
+                        navItems.forEach(otherItem => {
+                            if (otherItem !== item) {
+                                otherItem.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+                navLinks.classList.remove('active');
+                navItems.forEach(item => item.classList.remove('active'));
+            }
+        });
+    </script>
 
 </body>
 </html>
