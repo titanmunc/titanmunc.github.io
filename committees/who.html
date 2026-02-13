@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WHO - Kennedy Model United Nations</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
+
     <style>
         /* --- Fonts --- */
         @import url('https://fonts.googleapis.com/css2?family=GFS+Neohellenic:ital,wght@0,400;0,700;1,400;1,700&display=swap');
@@ -24,7 +25,7 @@
             --white: #ffffff;
             --off-white: #fdfdfd;
             --light-gray: #f4f4f4;
-            --shadow: 0 4px 15px rgba(0,0,0,0.1);
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         /* --- Global Reset & Typography --- */
@@ -44,7 +45,12 @@
             min-height: 100vh;
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-family: 'GFS Neohellenic', serif;
             color: var(--purple);
             font-weight: 700;
@@ -55,7 +61,8 @@
         p {
             font-size: 1.15rem;
             margin-bottom: 1rem;
-            color: #4a4a4a; /* Slightly softer black for long reading */
+            color: #4a4a4a;
+            /* Slightly softer black for long reading */
         }
 
         a {
@@ -66,7 +73,7 @@
 
         /* --- Utility: Greek Meander Border Pattern --- */
         .greek-border {
-            height: 40px; 
+            height: 40px;
             width: 100%;
             background-color: var(--white);
             background-image: url("/assets/greek.png");
@@ -76,7 +83,7 @@
                This keeps the aspect ratio constant. It will repeat 
                horizontally rather than stretch.
             */
-            background-size: auto 100%; 
+            background-size: auto 100%;
             margin: 0;
         }
 
@@ -86,7 +93,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             border-bottom: 3px solid var(--gold);
         }
 
@@ -157,7 +164,7 @@
         .comm-hero h1 {
             font-size: 4rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 0px rgba(0,0,0,0.05);
+            text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.05);
         }
 
         .comm-type {
@@ -192,8 +199,8 @@
             font-weight: bold;
             border-radius: 8px;
             border: 1px solid #48259c;
-            border-bottom: 6px solid #361a7a; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+            border-bottom: 6px solid #361a7a;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
             transition: all 0.1s ease;
             cursor: pointer;
         }
@@ -201,14 +208,14 @@
         .cta-button:hover {
             background: linear-gradient(to bottom, #8262d1, #613bbd);
             transform: translateY(-2px);
-            box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
             color: var(--white);
         }
 
         .cta-button:active {
             transform: translateY(4px);
             border-bottom-width: 2px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         }
 
         /* --- Main Content Layout --- */
@@ -217,7 +224,8 @@
             margin: 4rem auto;
             padding: 0 2rem;
             display: grid;
-            grid-template-columns: 2fr 1fr; /* Content vs Sidebar */
+            grid-template-columns: 2fr 1fr;
+            /* Content vs Sidebar */
             gap: 4rem;
         }
 
@@ -235,7 +243,7 @@
             border-left: 5px solid var(--purple);
             padding: 2rem;
             margin-bottom: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             border-radius: 0 8px 8px 0;
         }
 
@@ -258,14 +266,15 @@
             border-radius: 12px;
             padding: 2rem;
             text-align: center;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
             border-top: 5px solid var(--gold);
         }
 
         .dais-img {
             width: 120px;
             height: 120px;
-            background-color: #ddd; /* Placeholder color */
+            background-color: #ddd;
+            /* Placeholder color */
             border-radius: 50%;
             margin: 0 auto 1.5rem auto;
             object-fit: cover;
@@ -294,8 +303,9 @@
 
         .resources-box {
             text-align: center;
-            padding: 2rem;
-            background: #fdfae8; /* Very light gold tint */
+            padding: 1rem;
+            background: #fdfae8;
+            /* Very light gold tint */
             border-radius: 12px;
             border: 1px solid var(--gold);
         }
@@ -315,7 +325,7 @@
         }
 
         footer p {
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.95rem;
             margin-bottom: 0.5rem;
         }
@@ -325,22 +335,46 @@
             .container {
                 grid-template-columns: 1fr;
             }
-            
+
             .sidebar {
-                order: -1; /* Dais on top on mobile? Or keep bottom. Let's keep normal flow */
+                order: -1;
+                /* Dais on top on mobile? Or keep bottom. Let's keep normal flow */
                 order: 1;
             }
         }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .menu-toggle { display: block; }
-            
-            .comm-hero h1 { font-size: 2.5rem; }
-            .container { padding: 0 1rem; margin: 2rem auto; }
+            .nav-links {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .comm-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+                margin: 2rem auto;
+            }
+        }
+
+                .hero-decoration {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            opacity: 0.5;
+            z-index: 0;
+            right: 40rem;
+            top: 160px;
+            transition: opacity 0.3s ease;
         }
     </style>
 </head>
+
 <body>
 
     <header>
@@ -364,57 +398,66 @@
 
     <section class="comm-hero">
         <span class="comm-type">General Assembly</span>
-        <h1>World Health Organization</h1>
-        <p>"Health is a state of complete physical, mental and social well-being and not merely the absence of disease or infirmity."</p>
+        <h1>SPECPOL</h1>
+        <img src="/assets/Greek Stickers (1)/6.svg" alt="Greek Decoration" class="hero-decoration">
+
+        <p>Special Political and Decolonization Committee</p>
     </section>
 
     <div class="greek-border"></div>
 
     <div class="container">
-        
+
         <main>
             <h2 class="section-title">Committee Overview</h2>
-            <p>The World Health Organization (WHO) is a specialized agency of the United Nations responsible for international public health. The WHO Constitution, which establishes the agency's governing structure and principles, states its main objective as "the attainment by all peoples of the highest possible level of health."</p>
-            <p>In this committee, delegates will navigate complex medical ethics, distribution logistics, and international sovereignty to solve pressing global health crises.</p>
+            <p>SPECPOL delves into many aspects regarding cross border policies and foreign state relations, but unlike
+                the Security Council, can not impose military sanctions to enforce policies. SPECPOL is still a UN body
+                of course and is able to create strong policies of international law and address security gaps through
+                international cooperation. Our committee will address the effects of colonization, the active efforts to
+                regain control over previously colonized territories, the policies needed to secure border lines,
+                managing immigration, addressing terrorism, and, of course, the consequences/surveillance needed to
+                ensure the created policies are kept.</p>
             <br>
-
-            <h2 class="section-title">Topic A: Mental Health in Conflict Zones</h2>
-            <div class="topic-card">
-                <h3>The Invisible Wounds of War</h3>
-                <p>Populations in conflict-affected areas are vulnerable to severe psychological distress. Delegates must address the lack of mental health infrastructure in refugee camps, the stigma surrounding psychological trauma, and the integration of mental health support into standard humanitarian aid packages.</p>
+         <div class="resources-box">
+                <h3>Delegate Resources</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 1.5rem;">Prepare for the conference by reviewing the
+                    comprehensive background guide.</p>
+                <a href="#" class="cta-button">Download guide</a>
             </div>
+            
 
-            <h2 class="section-title">Topic B: Antibiotic Resistance</h2>
+            <h2 class="section-title">Topic: Enforcing Border Policies and State Relations</h2>
             <div class="topic-card">
-                <h3>The Post-Antibiotic Era</h3>
-                <p>Antimicrobial resistance (AMR) threatens the effective prevention and treatment of an ever-increasing range of infections. This topic focuses on regulating antibiotic use in agriculture, incentivizing the development of new drugs by pharmaceutical giants, and ensuring equitable access to existing treatments in developing nations.</p>
+                <p>Border relations will be highlighted between several opposing and allied countries. There will be be
+                    major splits, one in favor of overarching state sovereignty, versus keeping peace and enforcing laws
+                    that ensure current territories and the safety of its inhabitants. We’ll have delegates debate on
+                    the policies needed to maintain international peace, even with some countries' intentions of
+                    invasion. Along with this, delegates can discuss how countries would like to deal with displaced
+                    persons dispersed from previous or emerging invasions.</p>
             </div>
         </main>
 
         <aside class="sidebar">
-            
-            <div class="resources-box">
-                <h3>Delegate Resources</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 1.5rem;">Prepare for the conference by reviewing the comprehensive background guide.</p>
-                <a href="#" class="cta-button">Download guide</a>
-            </div>
+
+   
 
             <div class="dais-card">
-                <img src="/assets/chair_placeholder.jpg" alt="Headshot of Chair" class="dais-img">
-                <div class="dais-name">Alex Titov</div>
+                <img src="/assets/chairs/samantha.png" alt="Headshot of Chair" class="dais-img">
+                <div class="dais-name">Samantha Louie</div>
                 <div class="dais-role">Head Chair</div>
                 <p class="dais-bio">
-                    Alex is a senior at Kennedy High School and has been involved in Model UN for four years. He is passionate about bio-ethics and looks forward to seeing how delegates tackle the complex issues of the WHO.
+                    I’m a Sophomore at Lowell High School in San Francisco, and I’ve been doing MUN since freshman year!
+                    I’m so excited to see all the policies and resolutions you come up with to solve one of our world's
+                    most pressing issues!
                 </p>
             </div>
 
             <div class="dais-card">
-                <img src="/assets/vice_placeholder.jpg" alt="Headshot of Vice Chair" class="dais-img">
-                <div class="dais-name">Sarah Jenkins</div>
+                <img src="/assets/chairs/kloe.png" alt="Headshot of Vice Chair" class="dais-img">
+                <div class="dais-name">Kloe Helmuth</div>
                 <div class="dais-role">Vice Chair</div>
                 <p class="dais-bio">
-                    Sarah is a junior joining the secretariat for her second year. When she isn't debating international policy, she plays varsity tennis and volunteers at the local animal shelter.
-                </p>
+                  I am a sophomore at Lowell High School in San Francisco. Model U.N was the first club I joined during freshman year, and ever since, I’ve been inspired to improve my skills in debate, and learn more about international diplomacy. I wish you all best of luck on your preparation for the conference!</p>
             </div>
 
         </aside>
@@ -429,4 +472,5 @@
     </footer>
 
 </body>
+
 </html>
