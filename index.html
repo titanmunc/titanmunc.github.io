@@ -7,636 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <style>
-        /* --- Fonts --- */
-        @import url('https://fonts.googleapis.com/css2?family=GFS+Neohellenic:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=GFS+Neohellenic:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;600;700&display=swap');
-
-        /* --- CSS Variables --- */
-        :root {
-            --purple: #542db1;
-            --purple-dark: #3e1f85;
-            --purple-light: #6d4bc4;
-            --gold: #fbab00;
-            --gold-hover: #ffc133;
-            --maroon: #9b0e02;
-            --white: #ffffff;
-            --off-white: #fdfdfd;
-            --light-gray: #f4f4f4;
-            --shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        /* --- Global Reset & Typography --- */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-color: var(--white);
-            color: var(--maroon);
-            font-family: 'Crimson Pro', serif;
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'GFS Neohellenic', serif;
-            color: var(--purple);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        p {
-            font-size: 1.15rem;
-            margin-bottom: 1rem;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s ease;
-        }
-
-        /* --- Utility: Greek Meander Border Pattern --- */
-        /* --- Utility: Greek Meander Border Pattern --- */
-        .greek-border {
-            height: 40px; 
-            width: 100%;
-            background-color: var(--white);
-            background-image: url("/assets/greek.png");
-            background-repeat: repeat-x;
-            background-position: center;
-            /* CHANGED: Set width to 'auto' and height to '100%' 
-               This keeps the aspect ratio constant. It will repeat 
-               horizontally rather than stretch.
-            */
-            background-size: auto 100%; 
-            margin: 0;
-        }
-
-
-        /* --- Navigation --- */
-        header {
-            background: linear-gradient(90deg, #6643b7 0%, #542db1 100%);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            border-bottom: 3px solid var(--gold);
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0.5rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-logo img {
-            height: 45px;
-            width: auto;
-            display: block;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 2.5rem;
-        }
-
-        .nav-item {
-            position: relative;
-        }
-
-        .nav-links a {
-            color: var(--white);
-            font-family: 'GFS Neohellenic', serif;
-            font-style: italic;
-            font-size: 1.2rem;
-            position: relative;
-            padding-bottom: 2px;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--gold);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-
-        /* Dropdown Menu */
-        .dropdown {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: linear-gradient(90deg, #6643b7 0%, #542db1 100%);
-            border: 1px solid var(--gold);
-            border-top: none;
-            min-width: 200px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            border-radius: 0 0 8px 8px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-
-        .nav-item:hover .dropdown {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown a {
-            display: block;
-            padding: 0.8rem 1.2rem;
-            color: var(--white);
-            text-decoration: none;
-            font-family: 'GFS Neohellenic', serif;
-            font-size: 1.1rem;
-            font-style: italic;
-            border-bottom: 1px solid rgba(251, 171, 0, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .dropdown a:last-child {
-            border-bottom: none;
-        }
-
-        .dropdown a:hover {
-            background-color: rgba(251, 171, 0, 0.1);
-            color: var(--gold);
-            padding-left: 1.5rem;
-        }
-
-        .dropdown a::after {
-            display: none;
-        }
-
-        .menu-toggle {
-            display: none;
-            color: var(--white);
-            font-size: 1.8rem;
-            cursor: pointer;
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            padding: 6rem 1rem;
-            background: radial-gradient(circle at center, var(--white) 0%, #f3effa 100%);
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            gap: 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Greek Sticker Decorations */
-        .hero-decoration {
-            position: absolute;
-            width: 180px;
-            height: 180px;
-            opacity: 0.5;
-            z-index: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .hero-decoration:hover {
-            opacity: 0.67;
-        }
-
-        .hero-decoration.top-left {
-            top: -10px;
-            left: 5px;
-            transform: rotate(15deg);
-        }
-
-        .hero-decoration.top-right {
-            top: -10px;
-            right: 5px;
-            transform: rotate(-10deg);
-        }
-
-        .hero-decoration.bottom-left {
-            bottom: 5px;
-            left: 5px;
-            transform: rotate(10deg);
-        }
-
-        .hero-decoration.bottom-right {
-            bottom: 5px;
-            right: 5px;
-            transform: rotate(-12deg);
-        }
-
-        .hero-logo {
-            width: 220px;
-            max-width: 100%; 
-            height: auto; 
-            margin-bottom: 0;
-            filter: drop-shadow(0 10px 15px rgba(84, 45, 177, 0.2));
-            transition: transform 0.5s ease;
-        }
-
-        .hero-logo:hover {
-            transform: scale(1.02);
-        }
-
-        .hero-content {
-            text-align: left;
-            max-width: 650px;
-        }
-
-        .hero h1 {
-            font-size: 5rem;
-            color: var(--purple);
-            margin-bottom: 1.5rem;
-            margin-top: 1rem;
-            line-height: 1;
-            text-shadow: 2px 2px 0px rgba(0,0,0,0.05);
-        }
-
-        .hero-subtitle {
-            font-size: 1.8rem;
-            color: var(--maroon);
-            font-style: italic;
-            margin-bottom: 2.5rem;
-            margin-top: -1rem;
-            font-weight: 300;
-        }
-
-        /* --- Countdown Styling --- */
-        .countdown-container {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2.5rem;
-            justify-content: center;
-        }
-
-        .countdown-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: rgba(84, 45, 177, 0.08);
-            padding: 0.8rem 1rem;
-            border-radius: 8px;
-            border: 1px solid rgba(84, 45, 177, 0.2);
-            min-width: 70px;
-            transition: all 0.3s ease;
-        }
-
-        .countdown-item:hover {
-            background-color: rgba(84, 45, 177, 0.12);
-            border-color: rgba(84, 45, 177, 0.3);
-            transform: translateY(-1px);
-        }
-
-        .countdown-number {
-            font-family: 'Space Mono', monospace;
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--maroon);
-            line-height: 1;
-            letter-spacing: 2px;
-        }
-
-        .countdown-label {
-            font-family: 'Crimson Pro', serif;
-            font-size: 0.8rem;
-            color: var(--maroon);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 0.3rem;
-            font-weight: 400;
-            opacity: 0.8;
-        }
-
-        /* --- Bevelish CTA Button --- */
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(to bottom, #7452c6, #542db1);
-            color: var(--white);
-            padding: 14px 30px;
-            font-family: 'GFS Neohellenic', serif;
-            font-size: 1.4rem;
-            font-weight: bold;
-            border-radius: 8px;
-            
-            /* Bevel Magic */
-            border: 1px solid #48259c;
-            border-bottom: 6px solid #361a7a; /* Thick dark bottom border for 3D depth */
-            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
-            
-            transition: all 0.1s ease;
-            transform: translateY(0);
-        }
-
-        .cta-button:hover {
-            background: linear-gradient(to bottom, #8262d1, #613bbd);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 10px rgba(0,0,0,0.2);
-            color: var(--white);
-        }
-
-        .cta-button:active {
-            /* On click, remove "depth" to simulate pressing */
-            transform: translateY(4px);
-            border-bottom-width: 2px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-        }
-
-        /* --- Details Section --- */
-        .details-container {
-            max-width: 1000px;
-            margin: 4rem auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .detail-box {
-            padding: 2.5rem;
-            text-align: center;
-            background-color: var(--white);
-            border: 1px solid rgba(84, 45, 177, 0.1);
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Decorative top bar on detail boxes */
-        .detail-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background-color: var(--gold);
-        }
-
-        .detail-box h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-            color: var(--purple);
-        }
-
-        .detail-box p {
-            font-size: 1.4rem;
-            color: var(--maroon);
-            font-weight: 600;
-            line-height: 1.4;
-        }
-
-        .address {
-            font-style: normal;
-        }
-
-        /* --- Explore / Quick Links Section --- */
-        .quick-links {
-            /* New Gradient Background */
-            background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
-            padding: 5rem 1rem;
-            text-align: center;
-            position: relative;
-        }
-
-        /* Pattern overlay for texture */
-        .quick-links::after {
-            content: "";
-            opacity: 0.05;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            position: absolute;
-            z-index: 0;
-            background-image: radial-gradient(var(--white) 1px, transparent 1px);
-            background-size: 20px 20px;
-        }
-
-        .quick-links h2 {
-            color: var(--gold);
-            font-size: 3rem;
-            margin-bottom: 4rem;
-            position: relative;
-            z-index: 1;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .cards-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            gap: 2.5rem;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 1;
-        }
-
-        .card {
-            background-color: var(--white);
-            padding: 2.5rem 2rem;
-            border-radius: 12px;
-            width: 320px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            border-top: 5px solid var(--gold); /* Accent color top */
-            box-shadow: 0 15px 25px rgba(0,0,0,0.2);
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-
-        .card h3 {
-            color: var(--purple);
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .card p {
-            color: #555;
-            font-size: 1.05rem;
-            margin-bottom: 2rem;
-            flex-grow: 1; /* Pushes button to bottom */
-        }
-
-        .card-link {
-            display: inline-block;
-            padding: 10px 20px;
-            color: var(--purple);
-            font-family: 'GFS Neohellenic', serif;
-            font-weight: bold;
-            font-size: 1.1rem;
-            border: 2px solid var(--purple);
-            border-radius: 30px;
-            transition: all 0.3s ease;
-        }
-
-        .card:hover .card-link {
-            background-color: var(--purple);
-            color: var(--white);
-        }
-
-        /* --- Footer --- */
-        footer {
-            background-color: #2a115c; /* Very dark purple/maroon mix */
-            color: var(--white);
-            text-align: center;
-            padding: 3rem 1rem;
-            margin-top: auto;
-            border-top: 4px solid var(--gold);
-        }
-
-        footer p {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* --- Responsive --- */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none; 
-            }
-            .menu-toggle {
-                display: block;
-            }
-            
-            .hero-decoration {
-                width: 80px;
-                height: 80px;
-                opacity: 0.2;
-            }
-
-            .hero-decoration.top-left,
-            .hero-decoration.bottom-left {
-                left: 10px;
-            }
-
-            .hero-decoration.top-right,
-            .hero-decoration.bottom-right {
-                right: 10px;
-            }
-
-            .hero-decoration.top-left,
-            .hero-decoration.top-right {
-                top: 10px;
-            }
-
-            .hero-decoration.bottom-left,
-            .hero-decoration.bottom-right {
-                bottom: 10px;
-            }
-            
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                gap: 2rem;
-                padding: 4rem 1rem;
-            }
-            
-            .hero-content {
-                text-align: center;
-            }
-
-            .hero h1 {
-                font-size: 3rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.4rem;
-            }
-            
-            .details-container {
-                grid-template-columns: 1fr;
-                margin: 2rem 1rem;
-                gap: 1.5rem;
-            }
-
-            .quick-links h2 {
-                font-size: 2.2rem;
-            }
-
-            /* Mobile Navigation */
-            .nav-links.active {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: linear-gradient(90deg, #6643b7 0%, #542db1 100%);
-                padding: 1rem;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            }
-
-            .nav-item {
-                width: 100%;
-            }
-
-            .dropdown {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                border: none;
-                background: rgba(0,0,0,0.1);
-                margin-top: 0.5rem;
-                border-radius: 8px;
-            }
-
-            .nav-item .dropdown {
-                display: none;
-            }
-
-            .nav-item.active .dropdown {
-                display: block;
-            }
-
-            .dropdown a {
-                padding: 0.6rem 1rem;
-                font-size: 1rem;
-            }
-
-            .dropdown a:hover {
-                padding-left: 1.2rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -653,14 +24,26 @@
                 <li class="nav-item">
                     <a href="#committees">Committees</a>
                     <div class="dropdown">
-                        <a href="#ga1">GA 1</a>
-                        <a href="#ga2">GA 2</a>
-                        <a href="#spec">Specialized</a>
-                        <a href="#crisis">Crisis</a>
+                        <a href="/committees/specpol.html">SPECPOL</a>
+                        <a href="/committees/unep.html">UNEP</a>
+                        <a href="/committees/uscc.html">USCC</a>
+                        <a href="/committees/skyhigh.html">Skyhigh Airlines</a>
                     </div>
                 </li>
-                <li><a href="/info">Conference Info</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li class="nav-item">
+                    <a href="#info">Conference Info</a>
+                    <div class="dropdown">
+                        <a href="info.html">Logistics</a>
+                        <a href="position-papers.html">Position Papers</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#about">About Us</a>
+                    <div class="dropdown">
+                        <a href="about.html">About the Secretariat</a>
+                        <a href="contact.html">Contact us</a>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
@@ -680,7 +63,7 @@
             <h1>Titan MUNC I</h1>
                        <p class="hero-subtitle" id="countdown">Loading countdown...</p>
 
-            <a href="#register" class="cta-button">Register Now</a>
+            <a href="https://forms.gle/FTz4F7Jg49BoWAFf6" class="cta-button">Register Now</a>
         </div>
     </section>
 
@@ -705,31 +88,33 @@
         <h2>Explore the Conference</h2>
         <div class="cards-wrapper">
             
-            <div class="card">
-                <h3>Committees</h3>
-                <p>Explore our General Assemblies, Specialized Agencies, and Crisis committees.</p>
-                <a href="#committees" class="card-link">View Committees &rarr;</a>
-            </div>
+  
 
             <div class="card">
                 <h3>Information</h3>
                 <p>Find details on registration, schedule, fees, and position paper guidelines.</p>
-                <a href="#logistics" class="card-link">Read More &rarr;</a>
+                <a href="/info.html" class="card-link">Read More &rarr;</a>
             </div>
 
             <div class="card">
                 <h3>About Us</h3>
                 <p>Learn more about the Secretariat, our history, and the mission of Kennedy MUN.</p>
-                <a href="#about" class="card-link">Learn More &rarr;</a>
+                <a href="/about.html" class="card-link">Learn More &rarr;</a>
             </div>
 
-        </div>
+                      <div class="card">
+                <h3>Contact Us</h3>
+                <p>Reach out with any questions or concerns.</p>
+                <a href="/contact.html" class="card-link">Contact Us &rarr;</a>
+            </div>
     </section>
+
+    <div class="greek-border"></div>
 
     <footer>
         <div class="footer-content">
             <p>&copy; 2026 Kennedy Model United Nations. All Rights Reserved.</p>
-            <p>Designed with <span style="color: var(--gold); font-size: 1.2rem;">♥</span> in Fremont, CA.</p>
+            <p>Designed with <span style="color: var(--gold); font-size: 1.2rem;">♥</span> by Gurjus Bhasin</p>
         </div>
     </footer>
 
@@ -758,47 +143,8 @@
         // Update immediately, then every second
         updateCountdown();
         setInterval(updateCountdown, 1000);
-
-        // Mobile Navigation Toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        
-        menuToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-        });
-
-        // Mobile Dropdown Toggle
-        const navItems = document.querySelectorAll('.nav-item');
-        
-        navItems.forEach(item => {
-            const link = item.querySelector('a');
-            const dropdown = item.querySelector('.dropdown');
-            
-            if (dropdown) {
-                link.addEventListener('click', function(e) {
-                    if (window.innerWidth <= 768) {
-                        e.preventDefault();
-                        item.classList.toggle('active');
-                        
-                        // Close other dropdowns
-                        navItems.forEach(otherItem => {
-                            if (otherItem !== item) {
-                                otherItem.classList.remove('active');
-                            }
-                        });
-                    }
-                });
-            }
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
-                navLinks.classList.remove('active');
-                navItems.forEach(item => item.classList.remove('active'));
-            }
-        });
     </script>
+    <script src="script.js"></script>
 
 </body>
 </html>

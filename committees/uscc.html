@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WHO - Kennedy Model United Nations</title>
-
+    <title>USCC - Kennedy Model United Nations</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="/style.css">
 
     <style>
         /* --- Fonts --- */
@@ -71,87 +70,7 @@
             transition: all 0.3s ease;
         }
 
-        /* --- Utility: Greek Meander Border Pattern --- */
-        .greek-border {
-            height: 40px;
-            width: 100%;
-            background-color: var(--white);
-            background-image: url("/assets/greek.png");
-            background-repeat: repeat-x;
-            background-position: center;
-            /* CHANGED: Set width to 'auto' and height to '100%' 
-               This keeps the aspect ratio constant. It will repeat 
-               horizontally rather than stretch.
-            */
-            background-size: auto 100%;
-            margin: 0;
-        }
-
-        /* --- Navigation --- */
-        header {
-            background: linear-gradient(90deg, #6643b7 0%, #542db1 100%);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            border-bottom: 3px solid var(--gold);
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0.5rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-logo img {
-            height: 45px;
-            width: auto;
-            display: block;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 2.5rem;
-        }
-
-        .nav-links a {
-            color: var(--white);
-            font-family: 'GFS Neohellenic', serif;
-            font-style: italic;
-            font-size: 1.2rem;
-            position: relative;
-            padding-bottom: 2px;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--gold);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-
-        .menu-toggle {
-            display: none;
-            color: var(--white);
-            font-size: 1.8rem;
-            cursor: pointer;
-        }
+       
 
         /* --- Committee Hero --- */
         .comm-hero {
@@ -360,6 +279,52 @@
                 padding: 0 1rem;
                 margin: 2rem auto;
             }
+
+            /* Mobile Navigation */
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: linear-gradient(90deg, #6643b7 0%, #542db1 100%);
+                padding: 1rem;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                background: rgba(0,0,0,0.1);
+                margin-top: 0.5rem;
+                border-radius: 8px;
+            }
+
+            .nav-item .dropdown {
+                display: none;
+            }
+
+            .nav-item.active .dropdown {
+                display: block;
+            }
+
+            .dropdown a {
+                padding: 0.6rem 1rem;
+                font-size: 1rem;
+            }
+
+            .dropdown a:hover {
+                padding-left: 1.2rem;
+            }
         }
 
                 .hero-decoration {
@@ -374,103 +339,82 @@
         }
     </style>
 </head>
-
 <body>
-
     <header>
         <nav>
-            <div class="nav-logo">
-                <a href="index.html">
-                    <img src="/assets/logo_w.svg" alt="MUNC Logo">
-                </a>
-            </div>
+            <div class="nav-logo"><a href="../index.html"><img src="/assets/logo_w.svg" alt="MUNC Logo"></a></div>
             <div class="menu-toggle">☰</div>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="/committees/who">Committees</a></li>
-                <li><a href="/info">Conference Info</a></li>
-                <li><a href="/index.html#contact">Contact</a></li>
+                <li><a href="../index.html">Home</a></li>
+                <li class="nav-item">
+                    <a href="#committees">Committees</a>
+                    <div class="dropdown">
+                        <a href="specpol.html">SPECPOL</a>
+                        <a href="unep.html">UNEP</a>
+                        <a href="uscc.html">USCC</a>
+                        <a href="skyhigh.html">Skyhigh Airlines</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#info">Conference Info</a>
+                    <div class="dropdown">
+                        <a href="../info.html">Logistics</a>
+                        <a href="../position-papers.html">Position Papers</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#about">About Us</a>
+                    <div class="dropdown">
+                        <a href="../about.html">About the Secretariat</a>
+                        <a href="../contact.html">Contact us</a>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
-
     <div class="greek-border"></div>
-
     <section class="comm-hero">
-        <span class="comm-type">General Assembly</span>
-        <h1>SPECPOL</h1>
-        <img src="/assets/Greek Stickers (1)/6.svg" alt="Greek Decoration" class="hero-decoration">
-
-        <p>Special Political and Decolonization Committee</p>
+        <span class="comm-type">Specialized Committee</span>
+        <h1>USCC</h1>
+        <p>United States Constitutional Convention</p>
     </section>
-
     <div class="greek-border"></div>
-
     <div class="container">
-
         <main>
             <h2 class="section-title">Committee Overview</h2>
-            <p>SPECPOL delves into many aspects regarding cross border policies and foreign state relations, but unlike
-                the Security Council, can not impose military sanctions to enforce policies. SPECPOL is still a UN body
-                of course and is able to create strong policies of international law and address security gaps through
-                international cooperation. Our committee will address the effects of colonization, the active efforts to
-                regain control over previously colonized territories, the policies needed to secure border lines,
-                managing immigration, addressing terrorism, and, of course, the consequences/surveillance needed to
-                ensure the created policies are kept.</p>
+            <p>In this specialized committee, delegates would debate what the future of the US should look like. The two sides, Federalists and Anti-Federalists, have opposing views on the structure and policies of the government. Delegates must negotiate key issues like representation and federal and state governments. By the end of the committee, delegates should ideally create a "Constitution" that addresses all the issues in the Articles of Confederation, and lay the foundations of the government of the US.</p>
             <br>
-         <div class="resources-box">
+            <div class="resources-box">
                 <h3>Delegate Resources</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 1.5rem;">Prepare for the conference by reviewing the
-                    comprehensive background guide.</p>
+                <p style="font-size: 0.9rem; margin-bottom: 1.5rem;">Prepare for the conference by reviewing the comprehensive background guide.</p>
                 <a href="#" class="cta-button">Download guide</a>
             </div>
-            
-
-            <h2 class="section-title">Topic: Enforcing Border Policies and State Relations</h2>
+            <h2 class="section-title">Topic: Addressing Colonial Issues Before the Constitution</h2>
             <div class="topic-card">
-                <p>Border relations will be highlighted between several opposing and allied countries. There will be be
-                    major splits, one in favor of overarching state sovereignty, versus keeping peace and enforcing laws
-                    that ensure current territories and the safety of its inhabitants. We’ll have delegates debate on
-                    the policies needed to maintain international peace, even with some countries' intentions of
-                    invasion. Along with this, delegates can discuss how countries would like to deal with displaced
-                    persons dispersed from previous or emerging invasions.</p>
+                <p>The future of the United States is uncertain, and its up to the delegates in this committee—you—to decide what comes next. Federalists and Anti-Federalists strongly disagree on how powerful the national government should be and how states should be represented. Delegates will debate major issues like representation, federal vs. state power, and individual rights, all while trying to fix the problems created by the Articles of Confederation. By the end, the goal is to draft resolutions that solve these issues and set up a stronger government for the new nation.</p>
             </div>
         </main>
-
         <aside class="sidebar">
-
-   
-
             <div class="dais-card">
-                <img src="/assets/chairs/samantha.png" alt="Headshot of Chair" class="dais-img">
-                <div class="dais-name">Samantha Louie</div>
+                <img src="/assets/chairs/aarna.png" alt="Headshot of Chair" class="dais-img">
+                <div class="dais-name">Aarna Gupta</div>
                 <div class="dais-role">Head Chair</div>
-                <p class="dais-bio">
-                    I’m a Sophomore at Lowell High School in San Francisco, and I’ve been doing MUN since freshman year!
-                    I’m so excited to see all the policies and resolutions you come up with to solve one of our world's
-                    most pressing issues!
-                </p>
+                <p class="dais-bio">I am Aarna, a junior at JFKS. I have been a part of MUN since my freshman year, and outside of it, I enjoy playing sports, trying new foods, and exploring the outdoors. I love MUN so much because it pushes me to think differently and see the world from someone else's perspective, and I get to learn about niche things.</p>
             </div>
-
             <div class="dais-card">
-                <img src="/assets/chairs/kloe.png" alt="Headshot of Vice Chair" class="dais-img">
-                <div class="dais-name">Kloe Helmuth</div>
+                <img src="/assets/chairs/gurjus.png" alt="Headshot of Vice Chair" class="dais-img">
+                <div class="dais-name">Gurjus Bhasin</div>
                 <div class="dais-role">Vice Chair</div>
-                <p class="dais-bio">
-                  I am a sophomore at Lowell High School in San Francisco. Model U.N was the first club I joined during freshman year, and ever since, I’ve been inspired to improve my skills in debate, and learn more about international diplomacy. I wish you all best of luck on your preparation for the conference!</p>
+                <p class="dais-bio">I am Gurjus, a junior at JFKHS. I've been a part of Model UN since my freshman year, and it's one of my favorite activities. I joined MUN because I really enjoy debate, politics, and collaborating with other delegates. Outside of it, I'm someone who enjoys photography, nature, and programming.</p>
             </div>
-
         </aside>
-
     </div>
-
     <footer>
         <div class="footer-content">
             <p>&copy; 2026 Kennedy Model United Nations. All Rights Reserved.</p>
-            <p>Designed with <span style="color: var(--gold); font-size: 1.2rem;">♥</span> in Fremont, CA.</p>
+            <p>Designed with <span style="color: var(--gold); font-size: 1.2rem;">♥</span> by Gurjus Bhasin</p>
         </div>
     </footer>
 
+    <script src="../script.js"></script>
 </body>
-
-</html>

@@ -3,345 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conference Info | Kennedy Model United Nations</title>
+    <title>Conference Logistics | Kennedy Model United Nations</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <style>
-        /* --- Fonts --- */
-        @import url('https://fonts.googleapis.com/css2?family=GFS+Neohellenic:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=GFS+Neohellenic:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
-        /* --- CSS Variables --- */
-        :root {
-            --purple: #542db1;
-            --purple-dark: #3e1f85;
-            --purple-light: #6d4bc4;
-            --gold: #fbab00;
-            --gold-hover: #ffc133;
-            --maroon: #9b0e02;
-            --white: #ffffff;
-            --off-white: #fdfdfd;
-            --light-gray: #f4f4f4;
-            --shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        /* --- Global Reset & Typography --- */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-color: var(--white);
-            color: var(--maroon);
-            font-family: 'Crimson Pro', serif;
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'GFS Neohellenic', serif;
-            color: var(--purple);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        p {
-            font-size: 1.15rem;
-            margin-bottom: 1rem;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s ease;
-        }
-
-        /* --- Utility: Greek Meander Border Pattern --- */
-        .greek-border {
-            height: 40px; 
-            width: 100%;
-            background-color: var(--white);
-            background-image: url("/assets/greek.png"); /* Ensure you have this asset */
-            background-repeat: repeat-x;
-            background-position: center;
-            background-size: auto 100%; 
-            margin: 0;
-        }
-
-        /* --- Navigation --- */
-        header {
-            background: linear-gradient(90deg, #6643b7 0%, #542db1 100%);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            border-bottom: 3px solid var(--gold);
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0.5rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-logo img {
-            height: 45px;
-            width: auto;
-            display: block;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 2.5rem;
-        }
-
-        .nav-links a {
-            color: var(--white);
-            font-family: 'GFS Neohellenic', serif;
-            font-style: italic;
-            font-size: 1.2rem;
-            position: relative;
-            padding-bottom: 2px;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--gold);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-
-        .menu-toggle {
-            display: none;
-            color: var(--white);
-            font-size: 1.8rem;
-            cursor: pointer;
-        }
-
-        /* --- Page Header (Smaller than Home Hero) --- */
-        .page-header {
-            background: radial-gradient(circle at center, var(--white) 0%, #f3effa 100%);
-            padding: 4rem 1rem;
-            text-align: center;
-        }
-
-        .page-header h1 {
-            font-size: 3.5rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 0px rgba(0,0,0,0.05);
-        }
-
-        .page-header p {
-            font-size: 1.4rem;
-            font-style: italic;
-            color: var(--maroon);
-        }
-
-        /* --- Content Layout --- */
-        .content-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 4rem 1.5rem;
-        }
-
-        .section-block {
-            margin-bottom: 5rem;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            border-bottom: 2px solid var(--gold);
-            display: inline-block;
-            margin-bottom: 2rem;
-            padding-bottom: 0.5rem;
-        }
-
-        /* --- Registration Pricing Grid --- */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .price-card {
-            background: var(--white);
-            border: 1px solid rgba(84, 45, 177, 0.1);
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border-top: 6px solid var(--purple);
-            transition: transform 0.3s ease;
-        }
-
-        .price-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-        }
-
-        .price-card.featured {
-            border-top: 6px solid var(--gold);
-            background: linear-gradient(to bottom, #fffcf5, #fff);
-        }
-
-        .price-amount {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--purple);
-            font-family: 'GFS Neohellenic', serif;
-            margin: 1rem 0;
-        }
-
-        .price-details {
-            font-size: 1.1rem;
-            color: #555;
-            margin-bottom: 1.5rem;
-        }
-
-        /* --- CTA Button (Reused) --- */
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(to bottom, #7452c6, #542db1);
-            color: var(--white);
-            padding: 12px 25px;
-            font-family: 'GFS Neohellenic', serif;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 8px;
-            border: 1px solid #48259c;
-            border-bottom: 5px solid #361a7a;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
-            transition: all 0.1s ease;
-            transform: translateY(0);
-        }
-
-        .cta-button:hover {
-            background: linear-gradient(to bottom, #8262d1, #613bbd);
-            transform: translateY(-2px);
-            color: var(--white);
-        }
-
-        .cta-button:active {
-            transform: translateY(4px);
-            border-bottom-width: 2px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-        }
-
-        /* --- Logistics: Schedule Table --- */
-        .schedule-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-            box-shadow: var(--shadow);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .schedule-table th {
-            background-color: var(--purple);
-            color: var(--white);
-            padding: 1rem;
-            text-align: left;
-            font-family: 'GFS Neohellenic', serif;
-            font-size: 1.3rem;
-            letter-spacing: 1px;
-        }
-
-        .schedule-table td {
-            padding: 1rem;
-            background-color: var(--white);
-            border-bottom: 1px solid #eee;
-            color: var(--maroon);
-            font-weight: 500;
-        }
-
-        .schedule-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .schedule-table tr:hover td {
-            background-color: #fcfaff;
-        }
-
-        /* --- Position Paper Guidelines --- */
-        .guidelines-box {
-            background-color: #fffcf5; /* Light gold tint */
-            padding: 2.5rem;
-            border-left: 5px solid var(--gold);
-            border-radius: 0 8px 8px 0;
-            box-shadow: var(--shadow);
-        }
-
-        .guidelines-box ul {
-            list-style-position: inside;
-            margin-top: 1rem;
-        }
-
-        .guidelines-box li {
-            margin-bottom: 0.8rem;
-            font-size: 1.1rem;
-        }
-
-        .guidelines-box strong {
-            color: var(--purple);
-        }
-
-        /* --- Footer --- */
-        footer {
-            background-color: #2a115c;
-            color: var(--white);
-            text-align: center;
-            padding: 3rem 1rem;
-            margin-top: auto;
-            border-top: 4px solid var(--gold);
-        }
-
-        footer p {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* --- Responsive --- */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .menu-toggle { display: block; }
-            
-            .page-header h1 { font-size: 2.5rem; }
-            .content-container { padding: 2rem 1rem; }
-            
-            .pricing-grid { grid-template-columns: 1fr; }
-            
-            .schedule-table th, .schedule-table td {
-                padding: 0.8rem;
-                font-size: 0.95rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -355,9 +21,29 @@
             <div class="menu-toggle">☰</div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#committees">Committees</a></li>
-                <li><a href="info.html">Conference Info</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li class="nav-item">
+                    <a href="#committees">Committees</a>
+                    <div class="dropdown">
+                        <a href="/committees/specpol.html">SPECPOL</a>
+                        <a href="/committees/unep.html">UNEP</a>
+                        <a href="/committees/uscc.html">USCC</a>
+                        <a href="/committees/skyhigh.html">Skyhigh Airlines</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#info">Conference Info</a>
+                    <div class="dropdown">
+                        <a href="info.html">Logistics</a>
+                        <a href="position-papers.html">Position Papers</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#about">About Us</a>
+                    <div class="dropdown">
+                        <a href="about.html">About the Secretariat</a>
+                        <a href="contact.html">Contact us</a>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
@@ -365,8 +51,8 @@
     <div class="greek-border"></div>
 
     <section class="page-header">
-        <h1>Conference Information</h1>
-        <p>Logistics, Registration, and Guidelines for Titan MUNC</p>
+        <h1>Conference Logistics</h1>
+        <p>Registration and Schedule Information for Titan MUNC</p>
     </section>
 
     <div class="greek-border"></div>
@@ -375,7 +61,9 @@
 
         <section id="registration" class="section-block">
             <h2 class="section-title">Registration</h2>
-            <p>Delegations may register through ....</p>
+            <br>
+            <a href="https://forms.gle/FTz4F7Jg49BoWAFf6" target="_blank" class="cta-button">Register Here</a></p>
+            <p><strong>Please register your delegation by <em>Saturday, March 28th, 2026</em></strong></p>
             
 <!--             <div class="pricing-grid"> -->
 <!--                 <div class="price-card"> -->
@@ -408,73 +96,58 @@
         </section>
 
         <section id="logistics" class="section-block">
-            <h2 class="section-title">Conference Logistics</h2>
-            <p>Titan MUNC will be held on <strong>April 11, 2026</strong>. Please ensure all delegates arrive on time for Opening Ceremonies.</p>
+            <h2 class="section-title">Schedule</h2>
             
             <table class="schedule-table">
                 <thead>
                     <tr>
                         <th>Time</th>
                         <th>Event</th>
-                        <th>Location</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr> -->
-                    <!--     <td>08:00 AM - 08:45 AM</td> -->
-                    <!--     <td>Registration & Breakfast</td> -->
-                    <!--     <td>Main Cafeteria</td> -->
-                    <!-- </tr> -->
-                    <!-- <tr> -->
-                    <!--     <td>09:00 AM - 10:00 AM</td> -->
-                    <!--     <td>Opening Ceremonies</td> -->
-                    <!--     <td>Performing Arts Center</td> -->
-                    <!-- </tr> -->
-                    <!-- <tr> -->
-                    <!--     <td>10:15 AM - 12:30 PM</td> -->
-                    <!--     <td>Committee Session I</td> -->
-                    <!--     <td>Designated Classrooms</td> -->
-                    <!-- </tr> -->
-                    <!-- <tr> -->
-                    <!--     <td>12:30 PM - 01:30 PM</td> -->
-                    <!--     <td>Lunch Break</td> -->
-                    <!--     <td>Quad / Cafeteria</td> -->
-                    <!-- </tr> -->
-                    <!-- <tr> -->
-                    <!--     <td>01:30 PM - 04:30 PM</td> -->
-                    <!--     <td>Committee Session II</td> -->
-                    <!--     <td>Designated Classrooms</td> -->
-                    <!-- </tr> -->
-                    <!-- <tr> -->
-                    <!--     <td>05:00 PM - 06:00 PM</td> -->
-                    <!--     <td>Closing Ceremonies</td> -->
-                    <!--     <td>Performing Arts Center</td> -->
-                    <!-- </tr> -->
+                    <tr>
+                        <td>8:00 AM - 8:30 AM</td>
+                        <td>Check-in</td>
+                    </tr>
+                    <tr>
+                        <td>8:30 AM - 9:00 AM</td>
+                        <td>Opening Ceremony</td>
+                    </tr>
+                    <tr>
+                        <td>9:00 AM - 10:30 AM</td>
+                        <td>Committee Session #1</td>
+                    </tr>
+                    <tr>
+                        <td>10:30 AM - 10:45 AM</td>
+                        <td>Break</td>
+                    </tr>
+                    <tr>
+                        <td>10:45 AM - 12 PM</td>
+                        <td>Committee Session #2</td>
+                    </tr>
+                    <tr>
+                        <td>12:00 PM - 1:30 PM</td>
+                        <td>Lunch</td>
+                    </tr>
+                    <tr>
+                        <td>1:30 PM - 3:30 PM</td>
+                        <td>Committee Session #3</td>
+                    </tr>
+                    <tr>
+                        <td>3:30 PM - 4:00 PM</td>
+                        <td>Break</td>
+                    </tr>
+                    <tr>
+                        <td>4:00 PM - 6:00 PM</td>
+                        <td>Committee Session #4</td>
+                    </tr>
+                    <tr>
+                        <td>6:00 PM - 6:30 PM</td>
+                        <td>Closing Ceremony</td>
+                    </tr>
                 </tbody>
             </table>
-        </section>
-
-        <section id="papers" class="section-block">
-            <h2 class="section-title">Position Paper Guidelines</h2>
-            
-            <div class="guidelines-box">
-                <!-- <p>Position papers are required for all delegates wishing to be considered for awards. Papers must be submitted by <strong>April 4, 2026</strong> at 11:59 PM.</p> -->
-                <!--  -->
-                <!-- <ul> -->
-                <!--     <li><strong>Length:</strong> 1 page per topic, single-spaced.</li> -->
-                <!--     <li><strong>Font:</strong> 12 pt Times New Roman with 1-inch margins.</li> -->
-                <!--     <li><strong>Header:</strong> Include Committee Name, Country, School, and Delegate Name in the top left corner.</li> -->
-                <!--     <li><strong>Content:</strong> -->
-                <!--         <ul> -->
-                <!--             <li>Part 1: History of the topic and current status.</li> -->
-                <!--             <li>Part 2: Your country's past actions and official policy.</li> -->
-                <!--             <li>Part 3: Proposed solutions and future outlook.</li> -->
-                <!--         </ul> -->
-                <!--     </li> -->
-                <!--     <li><strong>Citations:</strong> Please use Chicago style footnotes for all citations.</li> -->
-                <!--     <li><strong>Submission:</strong> Email PDF files to <em>papers@kennedymun.org</em>.</li> -->
-                <!-- </ul> -->
-            </div>
         </section>
 
     </div>
@@ -482,9 +155,10 @@
     <footer>
         <div class="footer-content">
             <p>&copy; 2026 Kennedy Model United Nations. All Rights Reserved.</p>
-            <p>Designed with <span style="color: var(--gold); font-size: 1.2rem;">♥</span> in Fremont, CA.</p>
+            <p>Designed with <span style="color: var(--gold); font-size: 1.2rem;">♥</span> by Gurjus Bhasin</p>
         </div>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
