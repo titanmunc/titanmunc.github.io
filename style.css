@@ -519,6 +519,11 @@ nav {
     padding: 0 0.5rem;
 }
 
+body.position-papers-page .content-container {
+    max-width: 95%;
+    padding: 0 1rem;
+}
+
 .section-block {
     margin-bottom: 5rem;
     padding: 0 1rem;
@@ -612,12 +617,64 @@ nav {
 }
 
 /* --- Position Paper Guidelines --- */
+.notice-container {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.deadline-notice, .ai-policy-notice {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 1.2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-left: 5px solid var(--gold);
+}
+
+.deadline-notice h3, .ai-policy-notice h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--purple);
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.deadline-item {
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+    color: var(--maroon);
+}
+
+.ai-policy-notice p {
+    font-size: 1.1rem;
+    color: var(--maroon);
+    margin: 0;
+}
+
+.ai-policy-notice {
+    border-left-color: var(--maroon);
+    background: #fff5f5;
+}
+
 .guidelines-box {
     background-color: #fffcf5; /* Light gold tint */
-    padding: 2.5rem;
-    border-left: 5px solid var(--gold);
-    border-radius: 0 8px 8px 0;
+    /* padding: 2.5rem; */
+    /* border-left: 5px solid var(--gold); */
+    border-radius: 10px;
     box-shadow: var(--shadow);
+}
+
+body.position-papers-page .guidelines-box {
+    /* padding: 1.5rem; */
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+}
+
+body.position-papers-page .guidelines-box iframe {
+    width: 100% !important;
+    height: 800px;
 }
 
 .guidelines-box ul {
