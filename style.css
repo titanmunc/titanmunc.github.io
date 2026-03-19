@@ -527,8 +527,9 @@ body.position-papers-page .content-container {
 .section-block {
     margin-bottom: 5rem;
     padding: 0 1rem;
+    max-width: 100%;      /* ← add this */
+    box-sizing: border-box; /* ← add this */
 }
-
 .section-title {
     font-size: 2.5rem;
     border-bottom: 2px solid var(--gold);
@@ -1066,7 +1067,7 @@ footer p {
 .info-layout-container {
     max-width: 1600px;
     margin: 0 auto;
-    padding: 3rem 0 2rem;
+    padding: 3rem 10rem 2rem;
     display: grid;
     grid-template-columns: 1fr 400px;
     gap: 2rem;
@@ -1074,11 +1075,16 @@ footer p {
 }
 
 .info-content {
-    min-width: 0; /* Prevents flex item from overflowing */
+    min-width: 0;
+    width: 100%;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    box-sizing: border-box; /* ← add this */
 }
 
 .form-container {
-    margin: 1.5rem -1rem 0;
+    margin: 1.5rem 0 0;
     background: var(--white);
     border: 1px solid rgba(84, 45, 177, 0.1);
     border-radius: 12px;
@@ -1090,6 +1096,7 @@ footer p {
 .form-container iframe {
     width: 100%;
     height: 600px;
+    max-width: 100% !important;
     border: none;
     border-radius: 12px 12px 0 0;
 }
@@ -1228,6 +1235,99 @@ footer p {
     .form-actions {
         padding: 1rem;
     }
+}
+
+/* --- Waiver Section Styling --- */
+/* Replace your existing .waiver-info rule with this */
+.waiver-info {
+    background: var(--white);
+    border: 1px solid rgba(84, 45, 177, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    max-width: 100%;       /* ← add this */
+    box-sizing: border-box; /* ← add this */
+}
+
+.waiver-info p {
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+.waiver-info a {
+    word-break: break-all;
+    overflow-wrap: break-word;
+    max-width: 100%;
+}
+
+/* Ensure all text elements in info content wrap properly */
+.info-content p,
+.info-content a {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+}
+
+.important-instructions {
+    background: #fffcf5;
+    border-left: 5px solid var(--gold);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.important-instructions h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    color: var(--purple);
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.waiver-link-container {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.waiver-link-container .cta-button {
+    display: inline-block;
+    background: linear-gradient(to bottom, #7452c6, #542db1);
+    color: var(--white);
+    padding: 14px 30px;
+    font-family: 'GFS Neohellenic', serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+    border-radius: 8px;
+    border: 1px solid #48259c;
+    border-bottom: 6px solid #361a7a;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+    transition: all 0.1s ease;
+    transform: translateY(0);
+}
+
+.waiver-link-container .cta-button:hover {
+    background: linear-gradient(to bottom, #8262d1, #613bbd);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+    color: var(--white);
+}
+
+.waiver-link-container .cta-button:active {
+    transform: translateY(4px);
+    border-bottom-width: 2px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.note {
+    font-style: italic;
+    opacity: 0.8;
+    font-size: 1rem;
 }
 
 /* --- Contact Form Styling --- */
